@@ -13,8 +13,8 @@
     font-family: 'Open Sans', sans-serif;
 }
 #wrapper {
-    height: 50vh;
-    width: 50vw;
+    height: 500px;
+    width: 700px;
     padding: 50px;
     background-image: linear-gradient(300deg, grey, white);
 }
@@ -49,5 +49,5 @@ footer {
     text-align: center;
     position: relative; 
     top: 30px; 
-    left: -230px;
+    left: -100px;
 }

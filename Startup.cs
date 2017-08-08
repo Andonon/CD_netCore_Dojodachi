@@ -17,6 +17,7 @@ namespace dojodachi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -30,6 +31,7 @@ namespace dojodachi
             }
 
             app.UseStaticFiles();
+            app.UseSession();
             
             app.UseMvc( routes => 
             {
@@ -39,6 +41,7 @@ namespace dojodachi
                     defaults: new {controller = "Dachi", action = "Index"}
                 );
             });
+
 
         }
     }

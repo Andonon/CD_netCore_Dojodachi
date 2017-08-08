@@ -19,6 +19,7 @@ namespace dojodachi
                 .Build();
 
             host.Run();
+
         }
     }
 }
