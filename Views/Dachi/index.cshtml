@@ -4,11 +4,38 @@
     <title>Dojo Dachi</title>
     <meta description='Dojo Dachi App'>
     <meta charset='utf-8'/>
-    <link rel='stylesheet' type='text/css' href='' />
+    <link rel='stylesheet' type='text/css' href='~/css/styles.css' />
 </head>
 <body>
     <div id='wrapper'>
-        <h3>Hello12345!!</h3>
+        <div id="scores">
+            <div id="fullnessscore" class="score">
+                Fullness: 70
+            </div>
+            <div id="happinessscore" class="score">
+                Happiness: 45
+            </div>
+            <div id="mealscore" class="score">
+                Meals: 3
+            </div>
+            <div id="energyscore" class="score">
+                Energy: 85
+            </div>
+        </div>
+        <div id="dachi">
+            <div id="dachiimage">
+                <img src="~/img/dachiimage.png" alt="Dachi Image">
+            </div>
+            <div id="dachifeedback">
+                You played with your Dojodachi! Happiness +10, Energy -5
+            </div>
+        </div>
+        <div id="dachiactions">
+            <button id='feed'>Feed</button>
+            <button id='play'>Play</button>
+            <button id='work'>Work</button>
+            <button id='sleep'>Sleep</button>
+        </div>
     </div>
 </body>
 </html>

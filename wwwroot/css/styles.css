@@ -28,3 +28,26 @@ footer {
 /***************************************************/
 /*     MAIN CSS                                    */
 /***************************************************/
+.score {
+    display: inline-flex;
+    position: relative;
+    left: 10px;
+    width: 120px;
+    text-align: center;
+}
+#dachi {
+    border: 3px black solid;
+    width: 500px;
+    position: relative;
+    top: 20px; 
+    text-align: center;
+    height: 280px;
+    padding-top: 20px;
+}
+
+#dachiactions {
+    text-align: center;
+    position: relative; 
+    top: 30px; 
+    left: -230px;
+}

@@ -29,6 +29,8 @@ namespace dojodachi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+            
             app.UseMvc( routes => 
             {
                 routes.MapRoute(
@@ -37,6 +39,7 @@ namespace dojodachi
                     defaults: new {controller = "Dachi", action = "Index"}
                 );
             });
+
         }
     }
 }
