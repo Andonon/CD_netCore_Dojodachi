@@ -38,7 +38,7 @@
                 <p>@ViewBag.DachiData.status</p>
             </div>
         </div>
-        @{if(ViewBag.DachiData.status != "Your Dachi just died..."){
+        @{if(ViewBag.DachiData.status != "Your Dachi just died..." && ViewBag.DachiData.status != "Your Dachi just succeeded in life..." ){
             <div id="dachiactions">
                 <button id='feed' onclick="window.location.href='/feed'">Feed</button>
                 <button id='play' onclick="window.location.href='/play'">Play</button>
@@ -61,6 +61,7 @@
             <p>You cannot work or play if you have no energy.</p>
             <p>You cannot eat if you have no meals.</p>
             <p>If you get to 0 Fullness or 0 Happiness, you Dachi will die.</p>
+            <p>To Win: Fullness, Happiness, and Energy must be greater than 100.</p>
         </div>
     </div>
 </body>

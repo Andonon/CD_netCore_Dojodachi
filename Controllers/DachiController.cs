@@ -24,7 +24,11 @@ namespace dojodachi.Controllers
             ViewBag.DachiData = HttpContext.Session.GetObjectFromJson<Dachi>("DachiData");
                 if(ViewBag.DachiData.fullness < 1 || ViewBag.DachiData.happiness < 1 ){
                     ViewBag.DachiData.status = "Your Dachi just died...";
+                } 
+                if(ViewBag.DachiData.fullness > 100 && ViewBag.DachiData.happiness > 100 && ViewBag.DachiData.energy > 100){
+                    ViewBag.DachiData.status = "Your Dachi just succeeded in life...";
                 }
+
             return View();
         }
 
