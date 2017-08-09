@@ -18,16 +18,16 @@
         </div>
         <div id="scores">
             <div id="fullnessscore" class="score">
-                Fullness: @CurrFullness
+                Fullness: <span class="currdachidata">@ViewBag.DachiData.fullness</span>
             </div>
             <div id="happinessscore" class="score">
-                Happiness: @CurrHappiness
+                Happiness: <span class="currdachidata">@ViewBag.DachiData.happiness</span>
             </div>
             <div id="mealscore" class="score">
-                Meals: @CurrMeals
+                Meals:<span class="currdachidata"> @ViewBag.DachiData.meals</span>
             </div>
             <div id="energyscore" class="score">
-                Energy: @CurrEnergy
+                Energy: <span class="currdachidata">@ViewBag.DachiData.energy</span>
             </div>
         </div>
         <div id="dachi">
@@ -35,14 +35,32 @@
                 <img src="~/img/dachiimage.png" alt="Dachi Image">
             </div>
             <div id="dachifeedback">
-                You played with your Dojodachi! Happiness +10, Energy -5
+                <p>@ViewBag.DachiData.status</p>
             </div>
         </div>
-        <div id="dachiactions">
-            <button id='feed'>Feed</button>
-            <button id='play'>Play</button>
-            <button id='work'>Work</button>
-            <button id='sleep'>Sleep</button>
+        @{if(ViewBag.DachiData.status != "Your Dachi just died..."){
+            <div id="dachiactions">
+                <button id='feed' onclick="window.location.href='/feed'">Feed</button>
+                <button id='play' onclick="window.location.href='/play'">Play</button>
+                <button id='work' onclick="window.location.href='/work'">Work</button>
+                <button id='sleep' onclick="window.location.href='/sleep'">Sleep</button>
+                <button id='sleep' onclick="window.location.href='/reset'">Reset</button>
+            </div>
+        } else {
+            <div id="dachideathactions">
+                <button id='reset' onclick="window.location.href='/reset'">Reset</button>
+            </div>
+        }}        
+        <div id="instruction">
+            <h4>Instructions:</h4>
+            <p>Feeding costs 1 meal and yields between 5 and 10 fullness.</p>
+            <p>Playing costs 5 energy and yields between 5 and 10 happiness.</p>
+            <p>Work costs 5 energy and yields between 1 and 3 meals.</p>
+            <p>Sleep costs 5 fullness and 5 happuness and yields 15 energy.</p>
+            <br>
+            <p>You cannot work or play if you have no energy.</p>
+            <p>You cannot eat if you have no meals.</p>
+            <p>If you get to 0 Fullness or 0 Happiness, you Dachi will die.</p>
         </div>
     </div>
 </body>

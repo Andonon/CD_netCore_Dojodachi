@@ -8,6 +8,11 @@ namespace dojodachi.Controllers
 {
     public class DachiController : Controller
     {
+    
+        //============================================
+        //  Root Route
+        //============================================
+    
         [HttpGet]
         [Route("")]
         public IActionResult Index()
@@ -16,37 +21,93 @@ namespace dojodachi.Controllers
             {
                 HttpContext.Session.SetObjectAsJson("DachiData", new Dachi());
             }            
-            var CurrDachiData = HttpContext.Session.GetObjectFromJson<Dachi>("DachiData");
-            int CurrEnergy = CurrDachiData.energy;
-            int CurrFullness = CurrDachiData.fullness;
-            int CurrHappiness = CurrDachiData.happiness;
-            int CurrMeals = CurrDachiData.meals;
-
-            // Console.WriteLine("testing DachoiData");
-            // Console.WriteLine("Energy" + sampledata.energy);
-            // Console.WriteLine("Fullness" + sampledata.fullness);
-            // Console.WriteLine("Happiness" + sampledata.happiness);
-            // Console.WriteLine("Meals" + sampledata.meals);
-            return View("Index");
+            ViewBag.DachiData = HttpContext.Session.GetObjectFromJson<Dachi>("DachiData");
+                if(ViewBag.DachiData.fullness < 1 || ViewBag.DachiData.happiness < 1 ){
+                    ViewBag.DachiData.status = "Your Dachi just died...";
+                }
+            return View();
         }
+
+        //============================================
+        //  RESET Route
+        //============================================
 
         [HttpGet]
         [Route("reset")]
         public IActionResult Reset()
         {
-            // HttpContext.Session.Clear();
+            HttpContext.Session.Clear();
             return RedirectToAction("Index");
         }
+
+        //============================================
+        //  FEED Route
+        //============================================
 
         [HttpGet]
         [Route("feed")]
         public IActionResult FeedDachi()
         {
-            
-            
-            return View("Index");
+            Dachi CurrDachiData = HttpContext.Session.GetObjectFromJson<Dachi>("DachiData");
+            if(CurrDachiData.meals > 0){
+                CurrDachiData.feed();
+            } else {
+                CurrDachiData.status = "No Meals... your Dachi cannot eat. Work to earn meals.";
+            }
+            HttpContext.Session.SetObjectAsJson("DachiData",CurrDachiData);
+            return RedirectToAction("Index");
         }
+
+        //============================================
+        //  PLAY Route
+        //============================================
+        [HttpGet]
+        [Route("sleep")]
+        public IActionResult SleepDachi()
+        {
+            Dachi CurrDachiData = HttpContext.Session.GetObjectFromJson<Dachi>("DachiData");
+            CurrDachiData.sleep();
+            HttpContext.Session.SetObjectAsJson("DachiData",CurrDachiData);
+            return RedirectToAction("Index");
+        }
+        //============================================
+        //  WORK Route
+        //============================================
+
+        [HttpGet]
+        [Route("play")]
+        public IActionResult PlayDachi()
+        {
+            Dachi CurrDachiData = HttpContext.Session.GetObjectFromJson<Dachi>("DachiData");
+             if(CurrDachiData.energy > 0){
+                CurrDachiData.play();
+            } else {
+                CurrDachiData.status = "No Energy... your Dachi cannot work or play. Dachi needs sleep.";
+            }
+            HttpContext.Session.SetObjectAsJson("DachiData",CurrDachiData);
+            return RedirectToAction("Index");
+        }
+        //============================================
+        //  SLEEP Route
+        //============================================
+        
+        [HttpGet]
+        [Route("work")]
+        public IActionResult WorkDachi()
+        {
+            Dachi CurrDachiData = HttpContext.Session.GetObjectFromJson<Dachi>("DachiData");
+             if(CurrDachiData.energy > 0){
+                CurrDachiData.work();
+            } else {
+                CurrDachiData.status = "No Energy... your Dachi cannot work or play. Dachi needs sleep.";
+            }
+            HttpContext.Session.SetObjectAsJson("DachiData",CurrDachiData);
+            return RedirectToAction("Index");
+        }
+
+
     }
+
     public static class SessionExtensions
     {
         // We can call ".SetObjectAsJson" just like our other session set methods, by passing a key and a value

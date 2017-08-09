@@ -13,7 +13,7 @@
     font-family: 'Open Sans', sans-serif;
 }
 #wrapper {
-    height: 500px;
+    height: 600px;
     width: 700px;
     padding: 50px;
     background-image: linear-gradient(300deg, grey, white);
@@ -28,6 +28,11 @@ footer {
 /***************************************************/
 /*     MAIN CSS                                    */
 /***************************************************/
+h3 {
+    text-align: center;
+    position: relative; 
+    left: -100px;
+}
 .score {
     display: inline-flex;
     position: relative;
@@ -45,9 +50,32 @@ footer {
     padding-top: 20px;
 }
 
-#dachiactions {
+#dachiactions, #dachideathactions {
     text-align: center;
     position: relative; 
     top: 30px; 
     left: -100px;
+}
+
+button {
+    width: 50px;
+    height: 20px; 
+    box-shadow: 3px 3px 3px grey;
+}
+
+#dachifeedback {
+    font-size: .8em;
+}
+ 
+.currdachidata {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-left: 10px;
+} 
+
+#instruction {
+    font-size: .7em;
+    position: relative;
+    top: 50px;
+    left: 100px;
 }
