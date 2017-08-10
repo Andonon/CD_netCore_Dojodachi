@@ -21,9 +21,12 @@ namespace dojodachi {
         public Dachi feed()
         {
             Random rando = new Random();
-            int chance = rando.Next(0,4);
+            int chance = rando.Next(0,9);
             if(chance == 0){
-                this.status = "Your dachi did not want to eat now...";
+                this.meals-=1;
+                int amount = rando.Next(51,101);
+                this.fullness += amount;
+                this.status = $"Your dachi found some superdojos and is {amount} fuller!!!";
                 return this;
             } else {         
                 this.meals-=1;
